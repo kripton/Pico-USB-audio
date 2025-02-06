@@ -1,7 +1,9 @@
 #ifndef PDMAUDIO_H
 #define PDMAUDIO_H
 
+#ifdef ARDUINO
 #include "Arduino.h"
+#endif
 #include "SDM.h"
 
 
