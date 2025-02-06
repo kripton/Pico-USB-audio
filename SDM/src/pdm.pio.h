@@ -33,6 +33,7 @@ static inline pio_sm_config pdm_program_get_default_config(uint offset) {
 }
 
 
+#ifndef PICO_BUILD
 #ifndef _PICO_STDLIB_H
 #define _PICO_STDLIB_H
 
@@ -102,7 +103,7 @@ static inline bool set_sys_clock_khz(uint32_t freq_khz, bool required) {
   }
   return false;
 }
-
+#endif
 
 
 #endif

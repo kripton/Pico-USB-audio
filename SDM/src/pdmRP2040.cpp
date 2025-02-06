@@ -1,9 +1,18 @@
 #include "pdmAudio.h"
 
-#if defined ARDUINO_ARCH_MBED_RP2040 || defined ARDUINO_ARCH_RP2040 
+#if defined ARDUINO_ARCH_MBED_RP2040 || defined ARDUINO_ARCH_RP2040 || defined PICO_BUILD
 
 #include "pdm.pio.h"
 #include "pico/multicore.h"
+
+#ifdef PICO_BUILD
+#include "hardware/clocks.h"
+#include <math.h>
+#endif
+
+#ifndef PI
+#define PI 3.14159265358979323846
+#endif
 
 
 void core1_worker() {
@@ -11,7 +20,7 @@ void core1_worker() {
  uint sm;
  
  // wait untill pin number is received
- while(!multicore_fifo_rvalid()){     
+ while(!multicore_fifo_rvalid()){
  }
  uint32_t pin = multicore_fifo_pop_blocking();
  
